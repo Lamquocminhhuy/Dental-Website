@@ -17,7 +17,6 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            
             isShowPassword: false,
             errMessage: '',
            
@@ -29,6 +28,7 @@ class Login extends Component {
         this.setState({
             username: event.target.value,  
         }) 
+        
     }
 
     handleOnChangePassword = (event) => {
@@ -104,7 +104,7 @@ class Login extends Component {
                             <span
                                 onClick={() => {this.handleShowHidePassword()}}
                             >
-                                <i class={this.state.isShowPassword ? 'far fa-eye icon-eyes ie' : 'far fa-eye-slash ie'}></i></span>
+                                <i className={this.state.isShowPassword ? 'far fa-eye icon-eyes ie' : 'far fa-eye-slash ie'}></i></span>
                             
                             </div>
                            
@@ -114,7 +114,7 @@ class Login extends Component {
                             {this.state.errMessage}
                         </div>
                         <div className="col-12 ">
-                            <button class="btn-login" onClick={()=>{this.handleLogin()}  }>Login</button>
+                            <button className="btn-login" onClick={()=>{this.handleLogin()}  }>Login</button>
                            
                         </div>
                         
