@@ -13,14 +13,15 @@
             display: flex;
             align-items: center;
             width: 25%;
-            border: 1px solid green;
+           
             
 
             .header-logo{
-                height: 100%;
-                width: 100%;
-                background: url('https://bookingcare.vn/assets/icon/bookingcare-2020.svg') center center no-repeat;
+                height: 175px;
+                width: 250px;
+                background: url('../../assets/images/logo.png') center no-repeat;
                 cursor: pointer;
+                background-size: contain;
             }
             i{
                 font-size: 25px;
@@ -34,7 +35,7 @@
             justify-content:space-between;
             align-items: center;
             width: 50%;
-            border: 1px solid red;
+  
             cursor: pointer;
             .child-content{
                 .sub-title{
@@ -46,10 +47,45 @@
 
         .right-content{
             width: 25%;
-            border: 1px solid blue;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content:flex-end;
+
+           
+            .support{
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                
+                i{
+                font-size:15px;
+                cursor: pointer;
+                margin-right:5px;
+                color: gray;
+
+                    span{
+                        margin-left:5px;
+                    }
+                }
+
+            }
+
+            .language-vi{
+                cursor: pointer;  
+                &.active{
+                    color: orange;
+                }
+            }
+
+            .language-en{
+                margin: 0 10px;
+                cursor: pointer;     
+                &.active{
+                    color: blue;
+                }
+                       
+            }
+            
         }
     }
 }
@@ -58,15 +94,16 @@
     display: flex;
     flex-direction: column;
     height: 485px;
-    background-image: url('https://bookingcare.vn/assets/anh/bookingcare-cover-4.jpg') ,linear-gradient(rgba(0, 0, 0, 0.25),rgba(255, 255, 255, 0.1));
+    background-image: url('https://bookingcare.vn/assets/anh/bookingcare-cover-4.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
     .content-up{
-        border: 1px solid blue;
-        height: 50%;;
-        padding-top: 15px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.25),rgba(255, 255, 255, 0.1));
+   
+        height: 65%;;
+        padding-top: 50px;
 
         .title1{
             margin-top: 20px;
@@ -93,10 +130,13 @@
             padding: 10px;
             margin: 0 auto;
             border-radius: 30px;
-            background: #f7d800;
+            background: #fafaf8;
+            opacity: 0.9;
+            
     
             i{
                 margin: 0 5px;
+                color: #49bce2;
             }
     
             input{
@@ -106,6 +146,7 @@
                 background: transparent;
                 border: none;
                 outline: none;
+                
             }
     
     
@@ -113,18 +154,23 @@
 
     }
     .content-down{
-        border: 1px solid red;
-        height: 50%;
-     
+   
+        height: 35%;
         padding: 0 50px;
+        padding-bottom: 10px;
+        display: flex;
+        align-items: flex-end;
+        justify-content:center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 1));
    
         
         .options{
             display: flex;
             justify-content:center;
+            
             gap: 50px;
             text-align: center;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 1));
+            
            
             
 

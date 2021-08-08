@@ -1,0 +1,159 @@
+.slick-prev{
+    border: 2px solid #d7d7d7!important;
+    z-index: 1000 !important;
+    left: -10 !important;
+    height: 48px !important;
+    width: 44px !important;
+    background: #fff;
+    
+   
+    &:hover{
+        background: #d7d7d7 !important;
+        
+    }
+}
+.slick-next{
+    border: 2px solid #d7d7d7!important;
+    z-index: 1000 !important;
+    right: -10 !important;
+    height: 48px !important;
+    width: 44px !important;
+    background: #fff;
+    
+   
+    &:hover{
+        background: #d7d7d7 !important;
+        
+    }
+}
+.slick-prev:before, .slick-next:before{
+    font-family: FontAwesome !important;
+    color: gray !important;
+   
+   
+}
+
+.section-share{
+    &.section-specialty{
+        background: #f5f5f5;
+    }
+    &.section-doctor{
+        background: #f5f5f5;
+    }
+    
+    .section-body{
+           
+
+        .section-customize{
+            cursor: pointer;
+            &:hover{
+                color: blue;
+            }
+            .bg-image{
+                height: 150px ;
+                width: 278px ;
+               
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #eee;
+                background-position: center center;
+                
+            
+
+            &.section-specialty{
+                background-image: url('https://cdn.bookingcare.vn/fr/w300/2019/12/13/120331-co-xuong-khop.jpg');
+            }
+
+            &.section-facility{
+                background-image: url('https://cdn.bookingcare.vn/fr/w500/2020/06/04/090854-bv-an-viet1.jpg');
+
+            }
+
+            &.section-doctor{
+                background-image: url('https://cdn.iconscout.com/icon/free/png-256/doctor-1659516-1410038.png');
+                width: 120px ;
+                height: 120px;
+                margin: 0 auto;
+                border-radius: 50%;
+
+            }
+
+            &.section-handbook{
+                background-image: url('https://lienquan.garena.vn/files/upload/images/Trang%20B%E1%BB%8B/S%C3%A1ch%20th%C3%A1nh.png');
+                width: 120px ;
+                height: 120px;
+                margin: 0 auto;
+                border-radius: 50%;
+
+            }
+        }
+           
+        }
+
+ 
+  
+}
+}
+
+
+
+.section-share{
+    height: 330px;
+    
+   
+    
+    .section-container{
+        margin: 0 218px;
+        display: flex;
+        flex-direction: column;
+        .section-header{
+            height:60px;
+            
+            padding-top: 30px;
+            margin-bottom: 30px;
+
+            .title-section{
+                font-size:22px;
+                font-weight: 600;
+            }
+
+            .btn-section{
+                float:right;
+                border: none;
+                padding: 10px 15px;
+                outline: none;
+                display: block;
+                background: #ebebeb;
+                cursor: pointer;
+                text-transform: uppercase;
+
+                &:hover{
+                    color: white;
+                    background:  #49bce2;;
+
+                }
+
+            }
+        }
+
+        
+   
+  
+}
+
+}
+
+.section-doctor{
+    .outer-bg{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+
+
+
