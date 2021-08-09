@@ -41,13 +41,17 @@
         background: #f5f5f5;
     }
     
+    &.section-about{
+        background: #f5f5f5;
+        border: 1px solid red;
+    }
     .section-body{
            
 
         .section-customize{
             cursor: pointer;
             &:hover{
-                color: blue;
+                color: #49bce2;
             }
             .bg-image{
                 height: 150px ;
@@ -111,6 +115,7 @@
             
             padding-top: 30px;
             margin-bottom: 30px;
+           
 
             .title-section{
                 font-size:22px;
@@ -148,6 +153,15 @@
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
+    }
+}
+
+.home-footer{
+    text-align: center;
+    padding-top: 8px;
+
+    a{
+        text-decoration: unset;
     }
 }
 

@@ -7,6 +7,8 @@ import Facility from './Section/Facility'
 import Doctor from './Section/Doctor'
 import Handbook from './Section/Handbook';
 import Widget from './Section/Rasa';
+import About from './Section/About';
+import HomeFooter from './HomeFooter'
 import './Homepage.scss'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -36,6 +38,8 @@ class HomePage extends Component {
                 <Handbook 
                 settings={settings}/>
                 <Widget/>
+                <About/>
+                <HomeFooter/>
             
             
                 
