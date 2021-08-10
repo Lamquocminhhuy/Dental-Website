@@ -17,6 +17,7 @@ class HomePage extends Component {
 
     render() {
         let settings = {
+            // adaptiveHeight: true,
             dots: false,
             infinite: true,
             speed: 500,

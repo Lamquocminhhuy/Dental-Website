@@ -95,6 +95,7 @@
 }
 
 .home-header-banner{
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 485px;
@@ -102,10 +103,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    
     .content-up{
+        
         background-image: linear-gradient(rgba(0, 0, 0, 0.25),rgba(255, 255, 255, 0.1));
-   
         height: 65%;;
         padding-top: 50px;
 
@@ -158,8 +159,12 @@
 
     }
     .content-down{
-   
-        height: 35%;
+        position:absolute;
+        top: 100%;
+        transform: translateY(-100%);
+
+        width: 100%;
+
         padding: 0 50px;
         padding-bottom: 10px;
         display: flex;
@@ -171,6 +176,7 @@
         .options{
             display: flex;
             justify-content:center;
+            flex-wrap: wrap;
             
             gap: 50px;
             text-align: center;

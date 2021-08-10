@@ -10,11 +10,11 @@ class Rasa extends Component {
         return (
             <div>
                 <Widget
-              initPayload={"/greet"}
+              initPayload={"/dqdqwd"}
               socketUrl={"http://localhost:5005"}
               socketPath={"/socket.io/"}
               customData={{"language": "en"}} // arbitrary custom data. Stay minimal as this will be added to the socket
-              title={"Bot nè cụ"}
+              title={"Bot hỗ trợ"}
               showMessageDate={true}
             />    
             </div>

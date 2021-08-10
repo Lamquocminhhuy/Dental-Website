@@ -103,23 +103,6 @@ class HomeHeader extends Component {
                                 <div className="text-child">Khám chuyên khoa</div>
 
                             </div>
-                            
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
-
-                            </div>
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
-
-                            </div>
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
-
-                            </div>
-
                         </div>
 
                     </div>
