@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import {getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService}  from "../../services/userService"
+import {getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService, getTopDoctorHomeService, getAllDoctor}  from "../../services/userService"
 import {toast} from "react-toastify";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
@@ -11,6 +11,7 @@ export const fetchGenderStart =  () => {
         try{
 
             dispatch({type: actionTypes.FETCH_GENDER_START})
+
 
             let res =  await getAllCodeService("GENDER");
             if(res && res.errCode ===0){
@@ -122,6 +123,8 @@ export const fetchAllUserStart =  () => {
          
 
             let res =  await getAllUsers("ALL");
+            let res1 = await getTopDoctorHomeService();
+            console.log('check doctor', res1)
             if(res && res.errCode ===0){
                // trả về 
                
@@ -203,7 +206,62 @@ export const editAUser = (data) =>{
     }
     
 }
+
+
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState) =>{ 
+        try{
+            let res = await getTopDoctorHomeService();
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    dataDoctor: res.data,
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_FAILED,
+                })
+            }
+        }catch(e){
+            
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTOR_FAILED,
+            })
+         
+    
+        }
+    }
+}
+
+
+export const fetchAllDoctor = () => {
+    return async (dispatch, getState) =>{ 
+        try{
+            let res = await getAllDoctor();
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_SUCCESS,
+                    dataDr: res.data,
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_FAILED,
+                })
+            }
+        }catch(e){
+            
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTOR_FAILED,
+            })
+         
+    
+        }
+    }
+}
 //----------------------------------------------------------------
+
 
 export const editUserSuccess = () =>({
     type: 'EDIT_USER_SUCCESS'
