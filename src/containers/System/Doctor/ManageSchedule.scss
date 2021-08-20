@@ -1,27 +1,36 @@
-.manage-schedule-container{
-    .m-s-title{
+.manage-schedule-container {
+    .m-s-title {
         text-transform: uppercase;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        font-weight: 600;
-        font-size: 17px;
-        text-align: center;
+        margin-top    : 15px;
+        margin-bottom : 15px;
+        font-weight   : 600;
+        font-size     : 17px;
+        text-align    : center;
     }
-    .pick-hour-container{
-        margin: 20px 0;
-       padding-top: 20px;
-       padding-bottom: 20px;
-        gap: 20px;
-        flex-wrap: wrap;
-        display: flex;
+
+    .pick-hour-container {
+        margin        : 20px 0;
+        padding-top   : 20px;
+        padding-bottom: 20px;
+        gap           : 20px;
+        flex-wrap     : wrap;
+        display       : flex;
 
         button {
             padding: 5px 15px;
-            border: 1px solid green;
+            border : 1px solid green;
         }
     }
 
-    .btn-save-schedule{
-        margin-top: 20px
+
+    .btn-schedule {
+        &.active {
+            background-color: orange;
+        }
+    }
+
+    .btn-save-schedule {
+        margin-top: 20px;
+
     }
 }
