@@ -74,11 +74,13 @@
             }
 
             &.section-doctor{
+                display: flex;
                 background-image: url('https://cdn.iconscout.com/icon/free/png-256/doctor-1659516-1410038.png');
                 width: 120px ;
                 height: 120px;
                 margin: 0 auto;
                 border-radius: 50%;
+                cursor: pointer;
 
             }
 

@@ -16,6 +16,9 @@
                 "header": "Tham số hệ thống"
             }
         },
+        "doctor":{
+            "manage-schedule" : "Quản lý kế hoạch khám bệnh"
+        },
         "admin":{
             "manage-user" :"Người dùng",
             "manage-doctor" :"Quản lý bác sĩ",
@@ -27,7 +30,8 @@
             "specialty" : "Dịch vụ",
             "manage-specialty": "Quản lý dịch vụ",
             "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang"
+            "manage-handbook": "Quản lý cẩm nang",
+            "manage-schedule": "Quản lý kế hoạch khám bệnh"
          
         }
     }

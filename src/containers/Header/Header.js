@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
-import { adminMenu } from './menuApp';
+import { adminMenu, doctorMenu } from './menuApp';
 import './Header.scss';
 
 
 class Header extends Component {
+    componentDidMount() {
+        
 
+    }
     render() {
         const { processLogout, userInfo } = this.props;
         // console.log('check userinfo', userInfo)
@@ -35,6 +38,7 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+      
    
     };
 };

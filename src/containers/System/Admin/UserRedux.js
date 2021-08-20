@@ -357,7 +357,7 @@ class UserRedux extends Component {
                             </div>
                             <div className="col-3">
                                 <lable>Image</lable>
-                                <input type="file" />
+                                <input type="text" />
                                 <div className="preview-image"></div>
                             </div>
                             <div className="col-12 mt-3 ">

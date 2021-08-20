@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import * as actions from "../../../store/actions"
-
+import {withRouter} from "react-router";
 
 class Doctor extends Component {
+  
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,14 +23,19 @@ class Doctor extends Component {
       })
     }
   }
-
+  handleViewDetailDoctor = (doctor) => {
+    if(this.props.history){
+      this.props.history.push(`/detail-doctor/${doctor.id}`)
+    }
+   
+  }
   componentDidMount() {
     //fire redux actions for
     this.props.loadTopDoctors();
   }
 
 
-
+ 
     render() {
 
       console.log('check top doctor', this.props.topDoctorRedux)
@@ -52,17 +60,17 @@ class Doctor extends Component {
                     console.log('check item', item);
                   }
 
-                  let name = `${item.positionData.valueVi}, ${item.firstName} ${item.lastName}`
+                  let name = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`
                   
                   return(
-                    <div className="section-customize">
+                    <div className="section-customize" onClick={() => this.handleViewDetailDoctor(item)}>
                     <div className="outer-bg">
                     <div className="bg-image section-doctor"></div>
                     </div>
                   
                   <div className="position text-center">
                   <div>{name}</div>
-                  <div>Nội nha</div>
+                
                   </div>
                  
                 </div >
@@ -97,4 +105,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));

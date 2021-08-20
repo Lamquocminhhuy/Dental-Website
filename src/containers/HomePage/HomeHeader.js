@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss'
-import {FormattedMessage} from 'react-intl';
 
+import { withRouter } from "react-router";
 class HomeHeader extends Component {
     
     
    
 
-    
+    returnToHome = () => {
+        if (this.props.history) {
+            this.props.history.push(`/home`)
+        }
+    }
     render() {
-
-
-
-       
-
-        return (
-            
+        return (   
             <React.Fragment>
                 <div className="home-header-container">
 
                     <div className="home-header-content">
                         <div className="left-content">
                             <i className="fas fa-bars"></i>
-                            <div className="header-logo"></div>
+                            <div className="header-logo"
+                            onClick={() => this.returnToHome()}
+                            ></div>
                         </div>
 
                         <div className="center-content">
@@ -68,7 +68,7 @@ class HomeHeader extends Component {
                     </div>
 
                 </div>
-
+                {this.props.isShowBanner === true &&
                 <div className="home-header-banner">
 
                     <div className="content-up">
@@ -108,6 +108,7 @@ class HomeHeader extends Component {
                     </div>
 
                 </div>
+                }
             </React.Fragment>
         );
     }
@@ -126,4 +127,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));

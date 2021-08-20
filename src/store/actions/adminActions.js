@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import {getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService, getTopDoctorHomeService, getAllDoctor}  from "../../services/userService"
+import {getAllCodeService, createNewUserService, getAllUsers, deleteUserService, editUserService, getTopDoctorHomeService, getAllDoctor, saveDetailDoctorService}  from "../../services/userService"
 import {toast} from "react-toastify";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
@@ -257,6 +257,62 @@ export const fetchAllDoctor = () => {
             })
          
     
+        }
+    }
+}
+
+
+export const saveDetailDoctors = (data) => {
+    return async (dispatch, getState) =>{ 
+        try{
+            let res = await saveDetailDoctorService(data);
+            if(res && res.errCode === 0){
+                toast.info("Save infor doctor succeed!!")
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+                    
+                })
+            }else{
+                toast.info("Save infor doctor error!!")
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
+                })
+            }
+        }catch(e){
+            toast.info("Save infor doctor error!!")
+            console.log(e)
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
+            })
+         
+    
+        }
+    }
+}
+
+
+export const fetchAllScheduleTime = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService("TIME");
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
+                    dataTime: res.data,
+                })
+            } else {
+                dispatch({
+                    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED,
+                })
+            }
+        } catch (e) {
+
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED,
+            })
+
+
         }
     }
 }
