@@ -1,100 +1,163 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import moment from "moment";
-import localization from "moment/locale/vi"
 import './DoctorSchedule.scss'
+import moment from 'moment';
+import localization from 'moment/locale/vi';
+import { getScheduleDoctorByDate } from '../../../services/userService'
 
-import { getScheduleDoctorByDate } from "../../../services/userService"
-
-
-class DetailDoctor extends Component {
+import { LANGUAGES } from '../../../utils'
+class DoctorSchedule extends Component {
 
 
     constructor(props) {
         super(props);
         this.state = {
             allDays: [],
+            allAvailableTime: []
 
+        }
+    }
+
+
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.doctorIdFromParent !== prevProps.doctorIdFromParent) {
+            let allDays = this.getArrDays()
+            let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
+            this.setState({
+                allAvailableTime: res.data ? res.data : []
+            })
         }
     }
 
     async componentDidMount() {
-        this.setArrDays(this.props.language)
-  
-     
+        let allDays = this.getArrDays();
+
+        if (allDays && allDays.length > 0) {
+            let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
+            this.setState({
+                allDays: allDays,
+
+            })
+        }
+
+
     }
-    setArrDays = () =>{
+
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    getArrDays = () => {
         let allDays = [];
-        for (let i = 0; i < i < 7; i++) {
+        for (let i = 0; i < 7; i++) {
             let object = {};
-          
-                object.label = moment(new Date()).add(i, 'days').format('dddd - DD/MM');
-         
-           
+            let label = moment(new Date()).add(i, 'days').format('dddd - DD/MM');
+
+            object.label = this.capitalizeFirstLetter(label);
+
+            // lay timestamp tai thoi diem hien tai - startOf day : lay thoi diem dau ngay 00:00:00
             object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();
+
+
             allDays.push(object);
         }
-        this.setState({
-            allDays: allDays,
-        })
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-      
-   
+        return allDays;
+        // console.log('arrDate: ', allDays)
     }
 
-    handleOnChangeSelect = async (event) =>{ 
-        if(this.props.doctorIdFromParent && this.props.doctorIdFromParent !== -1){
-            let doctorId = this.props.doctorIdFromParent;
-            let date = event.target.value;
-            let res = await this.getScheduleDoctorByDate(doctorId, date);
-            
+    handleOnChangeSelect = async (event) => {
 
+        if (this.props.doctorIdFromParent && this.props.doctorIdFromParent !== -1) {
+            let doctorid = this.props.doctorIdFromParent
+            let date = event.target.value
+            let res = await getScheduleDoctorByDate(doctorid, date);
+
+
+            if (res && res.errCode === 0) {
+
+
+                this.setState({
+                    allAvailableTime: res.data ? res.data : []
+                })
+
+            }
+            console.log('check res', res)
         }
     }
     render() {
-       let { allDays} = this.state;
-        console.log('check state', this.props)
-       return (
-           <div className="doctor-schedule-container">
-               <div className="all-schedule">
-                   <select onChange={(event) => this.handleOnChangeSelect(event)}>
-                        {allDays && allDays.length > 0 &&
-                        allDays.map((item, index) =>{
-                            return(
-                                <option value={item.value}
-                                    key={index}
-                                >
-                                    {item.label}fefefewfwef
-                                </option>
-                            )
-                        })
-                        }
 
-                   </select>
+        let { allDays, allAvailableTime } = this.state;
+        // console.log('check', this.state)
+        return (<
+            div className="doctor-schedule-container" >
+            <
+            div className="all-schedule" >
+                <
+            select
 
-               </div>
-               <div className="all-available-time">
+                    onChange={
+                        (event) => this.handleOnChangeSelect(event)
+                    } > {
+                        allDays && allDays.length > 0 &&
+                        allDays.map((item, index) => {
+                            return (<
+                        option key={index}
+                                value={item.value} > {item.label} < /option>
+                                )
+                })
+            }
 
-               </div>
 
-           </div>
-       )
-        
+
+                                <
+            /select> < /
+            div > <
+            div className="all-available-time" >
+
+                                    <
+            div className="text-calendar" >
+
+                                        <
+            i className="fas fa-calendar-alt" > < span > Lịch khám < /span> < /
+            i >
+
+                                                <
+            div className="time-content" > {
+                                                        allAvailableTime && allAvailableTime.length > 0 ?
+
+                                                            allAvailableTime.map((item, index) => {
+
+                                                                return (<
+                        button key={index} > {item.timeTypeData.valueVi} < /button>
+                                                                    )
+                }) :
+                                                                    <
+                    div > Không có lịch hẹn trong khoảng thời gian này! < /div>
+            }
+
+
+                                                                        <
+            /div> <
+            div className="book-free" >
+                                                                            Chọn và đặt miễn phí <
+            /div> < /
+            div > <
+            /div> < /
+            div >
+
+                                                                            );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        systemMenuPath: state.app.systemMenuPath,
-        isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language
+                                                                                systemMenuPath: state.app.systemMenuPath,
+                                                                            isLoggedIn: state.user.isLoggedIn
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+    return { };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailDoctor);
+                                                                            export default connect(mapStateToProps, mapDispatchToProps)(DoctorSchedule);

@@ -5,13 +5,15 @@ import './DetailDoctor.scss'
 import { getDetailInforDoctor } from "../../../services/userService"
 import DoctorSchedule from './DoctorSchedule'
 
+
 class DetailDoctor extends Component {
 
 
     constructor(props) {
         super(props);
         this.state = {
-            detailDoctor: {}
+            detailDoctor: {},
+            currentDoctorId: -1,
 
         }
     }
@@ -20,10 +22,14 @@ class DetailDoctor extends Component {
         // call api axios
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id
+            this.setState({
+                currentDoctorId: id
+            })
             let res = await getDetailInforDoctor(id);
             if (res && res.errCode === 0) {
                 this.setState({
-                    detailDoctor: res.data
+                    detailDoctor: res.data,
+                    
                 })
             }
 
@@ -40,7 +46,7 @@ class DetailDoctor extends Component {
             name = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`
         }
 
-        console.log('check', this.state)
+        // console.log('check', this.state)
         return (
             <>
 
@@ -68,9 +74,11 @@ class DetailDoctor extends Component {
                     </div>
                     <div className="schedule-doctor">
                                <div className="content-left">
-                                   <DoctorSchedule 
-                                   doctorIdFromParent={detailDoctor && detailDoctor.id ? detailDoctor.id : -1 }
+                                   <DoctorSchedule
+                                   
+                                   doctorIdFromParent={this.state.currentDoctorId}
                                    />
+                                   
                                    <div className="content-right">
 
                                    </div>
