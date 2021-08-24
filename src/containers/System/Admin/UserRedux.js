@@ -303,8 +303,7 @@ class UserRedux extends Component {
                                 <lable>Gender</lable>
                                 <select className="form-control"
                                     value={gender}
-                                    onChange={(event) => { this.onChangeInput(event, 'gender') }}
-                                >
+                                    onChange={(event) => { this.onChangeInput(event, 'gender') }}>
                                     {genders && genders.length > 0 &&
                                         genders.map((item, index) => {
                                             // console.log(item)

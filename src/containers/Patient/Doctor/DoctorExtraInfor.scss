@@ -1,0 +1,26 @@
+.doctor-extra-infor-container{
+    padding-left: 15px;
+    .content-up{
+        .text-address{
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .detail-address{
+            font-weight: 600;
+            color: #333;
+
+        }
+    }
+
+    .content-down{
+
+       
+        .showhide{
+            color: blue;
+            cursor: pointer;
+        }
+
+        
+    }
+}

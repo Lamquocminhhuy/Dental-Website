@@ -20,7 +20,7 @@ class HomeHeader extends Component {
 
                     <div className="home-header-content">
                         <div className="left-content">
-                            <i className="fas fa-bars"></i>
+                            {/* <i className="fas fa-bars"></i> */}
                             <div className="header-logo"
                             onClick={() => this.returnToHome()}
                             ></div>
@@ -28,25 +28,25 @@ class HomeHeader extends Component {
 
                         <div className="center-content">
                             <div className="chid-content">
-                                <div><b>Chuyên khoa</b></div>
-                                <div className="sub-title">Tìm nha sĩ theo dịch vụ</div>
+                                <div><b>Dịch vụ</b></div>
+                         
 
                             </div>
                             <div className="chid-content">
                                 <div><b>Cơ sở y tế</b></div>
-                                <div className="sub-title">Chọn phòng khám</div>
+                       
 
                             </div>
 
                             <div className="chid-content">
                                 <div><b>Nha sĩ</b></div>
-                                <div className="sub-title">Chọn nha sĩ giỏi</div>
+                             
 
                             </div>
 
                             <div className="chid-content">
                                 <div><b>Gói khám</b></div>
-                                <div className="sub-title">Khám tổng quát</div>
+                             
 
                             </div>
 
@@ -58,12 +58,7 @@ class HomeHeader extends Component {
                                 <i className="fas fa-question-circle"><span>Hỗ trợ</span></i>
                                 
                             </div>
-                            <div className="language-vi">
-                                VN
-                            </div>
-                            <div className="language-en">
-                                EN
-                            </div>
+                         
                         </div>
                     </div>
 
@@ -83,24 +78,24 @@ class HomeHeader extends Component {
                     <div className="content-down">
                         <div className="options">
                             <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
+                                <div className="icon-child"><i className="fas fa-notes-medical"></i></div>
+                                <div className="text-child">Dịch vụ phổ biên</div>
 
                             </div>
                             <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-teeth-open"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
+                                <div className="icon-child"><i className="fas fa-users"></i></div>
+                                <div className="text-child">Đội ngũ nha sĩ</div>
                                
 
                             </div>
                             <div className="option-child">
                                 <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
+                                <div className="text-child">Cơ sở y tế</div>
 
                             </div>
                             <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Khám chuyên khoa</div>
+                                <div className="icon-child"><i className="fas fa-book"></i></div>
+                                <div className="text-child">Cẩm nang</div>
 
                             </div>
                         </div>

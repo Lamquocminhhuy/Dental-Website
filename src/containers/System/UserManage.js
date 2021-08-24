@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService, deleteUserService, editUserService } from '../../services/userService'
+import { getAllUsers, createNewUserService, deleteUserService, editUserService , getAllBooking} from '../../services/userService'
 import ModalUser from './ModalUser';
 import ModalEditUser from './ModalEditUser';
 import { emitter } from "../../utils/emitter";
@@ -28,10 +28,10 @@ class UserManage extends Component {
     }
 
     getAllUserFromReact = async () =>{
-        let response = await getAllUsers('ALL');
+        let response = await getAllBooking();
         if (response && response.errCode === 0) {
             this.setState({
-                arrUsers: response.users
+                arrUsers: response.data
             })
         }
     }
@@ -119,6 +119,7 @@ class UserManage extends Component {
     render() {
 
         let arrUsers = this.state.arrUsers;
+        console.log(arrUsers)
         return (
             <div className="users-container">
                 <ModalUser
@@ -154,24 +155,26 @@ class UserManage extends Component {
                         <tbody>
                             <tr>
                                 <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Address</th>
-                                <th>Actions</th>
+                                <th>SĐT</th>
+                                <th>Họ và tên</th>
+                                <th>Ngày đặt</th>
+                                <th>Khung giờ</th>
+                                <th>Dịch vụ</th>
+                                <th>Nha sĩ</th>
                             </tr>
 
                             {arrUsers && arrUsers.map((item, index) => {
 
                                 return (
                                     <tr>
-                                        <td>{item.email}</td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
-                                        <td>{item.address}</td>
-                                        <td>
-                                            <button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
-                                            <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><i className="fas fa-trash"></i></button>
-                                        </td>
+                                        <td>{item.PatientData.email}</td>
+                                        <td>{item.PatientData.phonenumber}</td>
+                                        <td>{item.PatientData.firstName}</td>
+                                        
+                                        <td>{item.date}</td>
+                                        <td>{item.Time.valueVi}</td>
+                                        <td>{item.Service.valueVi}</td>
+                                        <td>{item.DoctorData.firstName}</td>
                                     </tr>
                                 )
                             })}

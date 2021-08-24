@@ -1,0 +1,38 @@
+.intro-doctor{
+    display: flex;
+    margin: 0 100px;
+
+    
+    .content-left{
+        width: 140px;
+        height: 140px;
+        margin: 0px -100px;
+       
+        border-radius: 50%;
+
+        background: url('https://cdn.iconscout.com/icon/free/png-256/doctor-1659516-1410038.png') center center no-repeat;
+    }
+    .content-rights{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 120px;
+
+        .up{
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: 600;
+           
+        }
+
+        .down{
+
+            .time-booking{
+                padding-top: 10px;
+                text-transform: uppercase;
+            }
+        }
+
+       
+    }
+}

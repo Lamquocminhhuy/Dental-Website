@@ -10,6 +10,7 @@ class HomeFooter extends Component {
 
         return (
             <div className="home-footer">
+                <hr></hr>
                 <p>&copy; 2021 Nha Khoa Smile</p>
             </div>
         );
