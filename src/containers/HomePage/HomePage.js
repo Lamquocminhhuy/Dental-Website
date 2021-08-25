@@ -54,13 +54,10 @@ class HomePage extends Component {
     return (
       <div>
         <HomeHeader isShowBanner={true} />
-        <Specialty settings={settings} />
+        {/* <Specialty settings={settings} /> */}
         <Doctor settings={settings} />
-       
-
-   
+        <Facility/>
         <Widget />
-
         <HomeFooter />
       </div>
     );

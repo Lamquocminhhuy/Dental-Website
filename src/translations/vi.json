@@ -20,17 +20,17 @@
             "manage-schedule" : "Quản lý kế hoạch khám bệnh"
         },
         "admin":{
-            "manage-user" :"Người dùng",
+            "manage-user" :"Quản lý kế hoạch khám bệnh",
             "manage-doctor" :"Quản lý bác sĩ",
             "manage-admin": "Quản lý admin",
-            "crud": "CRUD user",
-            "crud-redux": "CRUD redux",
-            "clinic": "Phòng khám",
-            "manage-clinic":"Quản lý phòng khám",
-            "specialty" : "Dịch vụ",
-            "manage-specialty": "Quản lý dịch vụ",
-            "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang",
+            "crud": "Quản lý đặt lịch",
+            "crud-redux": "Tạo tài khoản nhân viên",
+            "clinic": "Quản lí thông tin đặt lịch",
+            "manage-clinic":"Thông tin đặt lịch",
+            "specialty" : "Tạo tài khoản nhân viên",
+            "manage-specialty": "Tạo tài khoản",
+            "handbook": "Quản lý thông tin",
+            "manage-handbook": "Thông tin nha sĩ",
             "manage-schedule": "Quản lý kế hoạch khám bệnh"
          
         }

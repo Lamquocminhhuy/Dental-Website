@@ -90,6 +90,10 @@ const postSlotAppointment = (data) => {
 const getAllBooking = () => {
     return axios.get('/api/booking-list')
 }
+
+const UpdateStatusBooking = (data) => {
+    return axios.post('/api/update-booking-status', data)
+}
 export {
     handleLoginApi,
     getAllUsers,
@@ -108,6 +112,7 @@ export {
     getAllService,
     postPatientAppointment,
     postSlotAppointment,
-    getAllBooking
+    getAllBooking,
+    UpdateStatusBooking
 
 }

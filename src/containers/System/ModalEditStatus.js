@@ -12,10 +12,9 @@ class ModalEditUser extends Component {
         this.state = {
             id: '',
             email: '',
-            password: '',
-            firstName: '',
-            lastName: '',
-            address: ''
+            statusId: '',
+            patientId: '',
+
         }
        
     }
@@ -24,15 +23,14 @@ class ModalEditUser extends Component {
 
     componentDidMount() {
         // console.log('mouting modal')
-        let user = this.props.currentUser;
-        if(user && !_.isEmpty(user)){
+        let status = this.props.currentUser;
+        if(status && !_.isEmpty(status)){
             this.setState({
-                id: user.id,
-                email: user.email,
-                password: "khongcopass",
-                firstName: user.firstName,
-                lastName: user.lastName,
-                address: user.address,
+                id: status.id,
+                email: status.PatientData.email,
+                firstName: status.PatientData.firstName,
+                statusId: status.Status.valueVi,
+                patientId: status.PatientData.id
             
             })
         }
@@ -59,35 +57,36 @@ class ModalEditUser extends Component {
     }
 
 
-    checkValidInput = () => {
-        let isValid = true;
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
-        for (let i = 0; i < arrInput.length; i++) {
-            if (!this.state[arrInput[i]]) {
-                isValid = false;
-                alert('Missing parameter ' + arrInput[i]);
-                break;
-            }
+    // checkValidInput = () => {
+    //     let isValid = true;
+    //     let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
+    //     for (let i = 0; i < arrInput.length; i++) {
+    //         if (!this.state[arrInput[i]]) {
+    //             isValid = false;
+    //             alert('Missing parameter ' + arrInput[i]);
+    //             break;
+    //         }
 
-        }
-        return isValid;
-    }
+    //     }
+    //     return isValid;
+    // }
 
 
     handleSaveUser = () => {
-        let isValid = this.checkValidInput();
-        if (isValid === true) {
+  
+    
             //call api edit user 
             this.props.editUser(this.state);
 
 
 
-        }
+        
         // console.log('data modal', this.state)
 
     }
     render() {
         console.log("Check props from parent: ", this.props)
+        console.log("check state: ", this.state)
 
         return (
             <Modal
@@ -106,30 +105,29 @@ class ModalEditUser extends Component {
                                 value={this.state.email}
                             />
                         </div>
+                    
                         <div className="input-container">
-                            <lable>Passoword:</lable>
-                            <input disabled type="password" onChange={(event) => { this.handleOnChangeInput(event, "password") }}
-                                value={this.state.password}
-                            />
-                        </div>
-                        <div className="input-container">
-                            <lable>First name:</lable>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "firstName") }}
+                            <lable>Khách hàng:</lable>
+                            <input disabled type="text" onChange={(event) => { this.handleOnChangeInput(event, "firstName") }}
                                 value={this.state.firstName}
                             />
                         </div>
                         <div className="input-container">
-                            <lable>Last name:</lable>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "lastName") }}
-                                value={this.state.lastName}
-                            />
+                            <lable>Status</lable>
+                            {/* <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "status") }}
+                                value={this.state.status}
+                            /> */}
+                            <select onChange={(event) => { this.handleOnChangeInput(event, "statusId") }}
+                                value={this.state.statusId}>
+                                    <option value="">----Chọn trạng thái----</option>
+                                    <option value="S1">Lịch hẹn mới</option>
+                                    <option value="S2">Đã xác nhận</option>
+                                    <option value="S3">Đã khám xong</option>
+                                    <option value="S4">Đã hủy</option>
+
+                            </select>
                         </div>
-                        <div className="input-container max-width-input">
-                            <lable>Address:</lable>
-                            <input type="text" onChange={(event) => { this.handleOnChangeInput(event, "address") }}
-                                value={this.state.address}
-                            />
-                        </div>
+                      
                     </div>
 
 

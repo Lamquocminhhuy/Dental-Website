@@ -12,6 +12,8 @@ class HomeFooter extends Component {
             <div className="home-footer">
                 <hr></hr>
                 <p>&copy; 2021 Nha Khoa Smile</p>
+                <p>Phòng Khám Nha Khoa Smile
+999 Đường 3/2, Quận Ninh Kiều ,TP.Cần Thơ</p>
             </div>
         );
     }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService, deleteUserService, editUserService , getAllBooking} from '../../services/userService'
+import { getAllUsers, createNewUserService, deleteUserService, editUserService , getAllBooking,UpdateStatusBooking} from '../../services/userService'
 import ModalUser from './ModalUser';
-import ModalEditUser from './ModalEditUser';
+import ModalEditUser from './ModalEditStatus';
 import { emitter } from "../../utils/emitter";
-
+import moment from "moment";
 
 class UserManage extends Component {
 
@@ -17,17 +17,17 @@ class UserManage extends Component {
             arrUsers: [],
             isOpenModalUser: false,
             isOpenModalEditUser :false,
-            userEdit: {}
+            statusEdit: {}
 
         }
     }
 
     async componentDidMount() {
-       await this.getAllUserFromReact();
+       await this.getAllBookingFromReact();
 
     }
 
-    getAllUserFromReact = async () =>{
+    getAllBookingFromReact = async () =>{
         let response = await getAllBooking();
         if (response && response.errCode === 0) {
             this.setState({
@@ -36,78 +36,78 @@ class UserManage extends Component {
         }
     }
 
-    handleAddNewUser = () => {
-        this.setState({
-            isOpenModalUser: true,
-        })
-    }
+    // handleAddNewUser = () => {
+    //     this.setState({
+    //         isOpenModalUser: true,
+    //     })
+    // }
 
-    toggleUserModal = () => {
+    toggleChangeModal = () => {
         this.setState({
             isOpenModalUser: !this.state.isOpenModalUser,
         })
     }
 
-    toggleUserEditModal = () => {
+    toggleStatusEditModal = () => {
         this.setState({
             isOpenModalEditUser: !this.state.isOpenModalEditUser,
         })
     }
 
-//Tạo user qua API
-    createNewUser = async (data) => {
-        console.log('check data from child', data)
-        try{
-           let response = await createNewUserService(data);
-           if(response && response.errCode !==0){
-               alert(response.errmessage);
-           }else{
-               // Fetch lại api show user sau khi tạo
-               await this.getAllUserFromReact();
-               this.setState({
-                isOpenModalUser: false,
-            })
-            emitter.emit('EVENT_CLEAR_MODAL_DATA')
-           }
-        }catch(e){
-            console.log(e)
-        }
-    }
+//Tạo status qua API
+    // createNewUser = async (data) => {
+    //     console.log('check data from child', data)
+    //     try{
+    //        let response = await createNewUserService(data);
+    //        if(response && response.errCode !==0){
+    //            alert(response.errmessage);
+    //        }else{
+    //            // Fetch lại api show status sau khi tạo
+    //            await this.getAllBookingFromReact();
+    //            this.setState({
+    //             isOpenModalUser: false,
+    //         })
+    //         emitter.emit('EVENT_CLEAR_MODAL_DATA')
+    //        }
+    //     }catch(e){
+    //         console.log(e)
+    //     }
+    // }
 
-    // delete user by api
-    handleDeleteUser = async (user) => {
+    // delete status by api
+    // handleDeleteUser = async (status) => {
         
-        try{
-           let response = await deleteUserService(user.id)
-           if (response && response.errCode === 0){
-                await this.getAllUserFromReact();
-           }else{
-                alert(response.errmessage)
-           }
+    //     try{
+    //        let response = await deleteUserService(status.id)
+    //        if (response && response.errCode === 0){
+    //             await this.getAllBookingFromReact();
+    //        }else{
+    //             alert(response.errmessage)
+    //        }
 
            
-        }catch(e){
-            console.log(e)
-        }
+    //     }catch(e){
+    //         console.log(e)
+    //     }
 
-    }
+    // }
 
-    handleEditUser = (user) =>{
-        console.log('check edit user', user)
+    handleEditUser = (status) =>{
+        console.log('check edit status', status)
         this.setState({
             isOpenModalEditUser: true,
-            userEdit: user
+            statusEdit: status
         })
     }
 
-    doEditUser = async (user) =>{
+    doEditUser = async (status) =>{
         try{
-            let response = await editUserService(user);
+            let response = await UpdateStatusBooking(status);
             if (response && response.errCode === 0){
                 this.setState({
                     isOpenModalEditUser: false
                 })
-                await this.getAllUserFromReact();
+                await this.getAllBookingFromReact();
             }else{
                 alert(response.errCode)
             }
@@ -123,7 +123,7 @@ class UserManage extends Component {
         return (
             <div className="users-container">
                 <ModalUser
-                    toggleFromParent={this.toggleUserModal}
+                    toggleFromParent={this.toggleChangeModal}
                     isOpen={this.state.isOpenModalUser}
                     createNewUser={this.createNewUser}
 
@@ -132,28 +132,29 @@ class UserManage extends Component {
                 {this.state.isOpenModalEditUser &&
 
                     <ModalEditUser
-                        toggleFromParent={this.toggleUserEditModal}
+                        toggleFromParent={this.toggleStatusEditModal}
                         isOpen={this.state.isOpenModalEditUser}
-                        currentUser={this.state.userEdit}
+                        currentUser={this.state.statusEdit}
                         editUser={this.doEditUser}
                     //   createNewUser={this.createNewUser}
 
                     />
                 }
                 <div className="title text-center">
-                    Manage User
+                    Thông tin đặt lịch
                 </div>
-                <div className="mx-1">
+                {/* <div className="mx-1">
                     <button
                         className="btn btn-primary px-3"
                         onClick={() => this.handleAddNewUser()}
 
                     ><i className="fas fa-plus"></i>Add new users</button>
-                </div>
+                </div> */}
                 <div className="users-table mt-3 mx-1">
                     <table id="customers">
                         <tbody>
-                            <tr>
+                            <tr> 
+                                <th>STT</th>
                                 <th>Email</th>
                                 <th>SĐT</th>
                                 <th>Họ và tên</th>
@@ -161,20 +162,25 @@ class UserManage extends Component {
                                 <th>Khung giờ</th>
                                 <th>Dịch vụ</th>
                                 <th>Nha sĩ</th>
+                                <th>Trạng thái</th>
+                                <th>Cập nhật trạng thái</th>
                             </tr>
 
                             {arrUsers && arrUsers.map((item, index) => {
-
+                            let date = moment.unix(+item.date / 1000).format('DD/MM/YYYY')
                                 return (
                                     <tr>
+                                        <td>{index  + 1}</td>
                                         <td>{item.PatientData.email}</td>
                                         <td>{item.PatientData.phonenumber}</td>
                                         <td>{item.PatientData.firstName}</td>
                                         
-                                        <td>{item.date}</td>
+                                        <td>{date}</td>
                                         <td>{item.Time.valueVi}</td>
                                         <td>{item.Service.valueVi}</td>
                                         <td>{item.DoctorData.firstName}</td>
+                                        <td>{item.Status.valueVi}</td>
+                                        <td><button className="btn-edit" onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button></td>
                                     </tr>
                                 )
                             })}

@@ -32,11 +32,7 @@ class HomeHeader extends Component {
                          
 
                             </div>
-                            <div className="chid-content">
-                                <div><b>Cơ sở y tế</b></div>
-                       
-
-                            </div>
+                        
 
                             <div className="chid-content">
                                 <div><b>Nha sĩ</b></div>
@@ -45,7 +41,7 @@ class HomeHeader extends Component {
                             </div>
 
                             <div className="chid-content">
-                                <div><b>Gói khám</b></div>
+                                <div><b>Về chúng tôi</b></div>
                              
 
                             </div>
@@ -69,10 +65,10 @@ class HomeHeader extends Component {
                     <div className="content-up">
                         <div className="title1">NỀN TẢNG Y TẾ</div>
                         <div className="title2">CHĂM SỐC SỨC KHỎE RĂNG MIỆNG</div>
-                        <div className="search">
+                        {/* <div className="search">
                             <i className="fas fa-search"></i>
                             <input type="text" placeholder="Tìm nha sĩ" />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="content-down">
@@ -88,16 +84,7 @@ class HomeHeader extends Component {
                                
 
                             </div>
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-hospital"></i></div>
-                                <div className="text-child">Cơ sở y tế</div>
-
-                            </div>
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-book"></i></div>
-                                <div className="text-child">Cẩm nang</div>
-
-                            </div>
+                     
                         </div>
 
                     </div>
