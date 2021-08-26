@@ -2,10 +2,11 @@
     height:60px;
     width: 100%;
     padding: 0 20px;
-    position: sticky;
+    opacity: 0.9;
+    position: fixed;
     top: 0;
     z-index: 100;
-    background: rgba(0,0,0,0.8);
+    background: #3a3737;
     backdrop-filter: saturate(180%) blur(20px) !important;
 
     .home-header-content{
@@ -44,9 +45,9 @@
             color: #F5F5F7;
             cursor: pointer;
          
-            
+            text-transform: uppercase;
             .child-content{
-               
+              
                    
               
             }

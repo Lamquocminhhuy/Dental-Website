@@ -13,7 +13,7 @@ class Facility extends Component {
        
 
         return (
-            <div className="section-share section-facility">
+            <div className="section-share section-facility" id="service">
             <div className="section-container">
               <div className="section-header">
                 <span className="title-section">Dịch vụ của phòng khám</span>

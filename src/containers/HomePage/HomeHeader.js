@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss'
-
+import { scroller } from "react-scroll";
 import { withRouter } from "react-router";
+
+import {
+    ScrollingProvider,
+    useScrollSection,
+    Section,
+  } from 'react-scroll-section';
 class HomeHeader extends Component {
     
     
@@ -13,7 +19,17 @@ class HomeHeader extends Component {
             this.props.history.push(`/home`)
         }
     }
+    
+    scrollToSection = () => {
+        scroller.scrollTo("service", {
+          duration: 800,
+          delay: 0,
+          smooth: "easeInOutQuart",
+        });
+      };
+
     render() {
+      
         return (   
             <React.Fragment>
                 <div className="home-header-container">
@@ -71,23 +87,7 @@ class HomeHeader extends Component {
                         </div> */}
                     </div>
 
-                    <div className="content-down">
-                        <div className="options">
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-notes-medical"></i></div>
-                                <div className="text-child">Dịch vụ phổ biên</div>
-
-                            </div>
-                            <div className="option-child">
-                                <div className="icon-child"><i className="fas fa-users"></i></div>
-                                <div className="text-child">Đội ngũ nha sĩ</div>
-                               
-
-                            </div>
-                     
-                        </div>
-
-                    </div>
+                 
 
                 </div>
                 }
